@@ -11,7 +11,7 @@ const fetchuser = require('../middleware/fetchuser');
 // jasa app tha bus uski jgah router lgana ha 	
 
 // creating a user using post "/api/auth/createuser". no login required	
-router.post('/createuser',[
+router.post('/api/auth/createuser',[
 
 
 	// name must be at least 5 chars long
@@ -70,7 +70,7 @@ router.post('/createuser',[
 // Router 2 - for login 
 
 // creating a user using post "/api/auth/login"
-router.post('/login',[
+router.post('/api/auth/login',[
 
 	// username must be an email
   body('email','Enter a valid Email').isEmail(),
@@ -119,7 +119,7 @@ router.post('/login',[
 })
 
 // Route 3  Get login user details
-router.post('/getuser', fetchuser,async(req,res)=>{
+router.post('/api/auth/getuser', fetchuser,async(req,res)=>{
 	try{
 		// getting the user id
 		userID = req.user.id;
