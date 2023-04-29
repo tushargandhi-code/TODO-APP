@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 
 // Route 1 get all the notes of user which is already loged in using get
 
-router.get('/fetchAllNotes', fetchuser , async(req, res)=>{
+router.get('/api/notes/fetchAllNotes', fetchuser , async(req, res)=>{
 	try{
 		// find notes of corresponding user 
 		const notes = await Notes.find({user : req.user.id});
@@ -24,7 +24,7 @@ router.get('/fetchAllNotes', fetchuser , async(req, res)=>{
 // hrr ek note jo add kraga uski alag id hogi or user id vo ha jo object id ha 
 	
 // adding notes using post "/api/auth/addnote"
-router.post('/addnote',fetchuser ,[
+router.post('/api/notes/addnote',fetchuser ,[
 
 	
   body('title','Enter a valid Title').isLength({min:3}),
@@ -55,7 +55,7 @@ router.post('/addnote',fetchuser ,[
 })
 
 // Router 3 - Update an existing note using delete request
-router.put('/updatenote/:id', fetchuser , async(req,res)=>{
+router.put('/api/notes/updatenote/:id', fetchuser , async(req,res)=>{
 	// using destructuring
 	try{
 	const {title, discription,tag} = req.body;
@@ -92,7 +92,7 @@ router.put('/updatenote/:id', fetchuser , async(req,res)=>{
 })
 
 // Router 4 - Deleting a note using delete
-router.delete('/deletenote/:id', fetchuser , async(req,res)=>{
+router.delete('/api/notes/deletenote/:id', fetchuser , async(req,res)=>{
 	// using destructuring
 	try{
 	const {title, discription,tag} = req.body;
